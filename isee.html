@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ISEE</title>
+
+  <!-- font -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#d8d2cc;
+      color:#2b2b2b;
+      overflow-x:hidden;
+      font-family:'Noto Sans TC',sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    section{
+      padding:120px 10%;
+    }
+
+    /* hero */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      position:relative;
+    }
+
+    .project-number{
+      font-family:'Oswald',sans-serif;
+      letter-spacing:3px;
+      opacity:.5;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-family:'Oswald',sans-serif;
+      font-size:7rem;
+      line-height:.9;
+      font-weight:400;
+      letter-spacing:3px;
+      margin-bottom:30px;
+    }
+
+    .hero-subtitle{
+      font-size:1rem;
+      letter-spacing:2px;
+      opacity:.7;
+      max-width:500px;
+      line-height:2;
+    }
+
+    .scroll{
+      position: absolute;
+      bottom: 40px;
+      left: 10%;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 3px;
+      animation: scrollMove 2s infinite;
+    }
+
+    @keyframes float{
+
+      0%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(10px);
+      }
+
+      100%{
+        transform:translateY(0);
+      }
+
+    }
+
+    /* banner */
+
+    .banner{
+      padding:0;
+    }
+
+    .banner img{
+      height:100vh;
+      object-fit:cover;
+    }
+
+    /* info */
+
+    .info{
+      display:flex;
+      justify-content:space-between;
+      gap:100px;
+    }
+
+    .info-left{
+      flex:1;
+    }
+
+    .info-right{
+      flex:1;
+    }
+
+    .info-group{
+      margin-bottom:50px;
+    }
+
+    .info-group span{
+      display:block;
+      font-family:'Oswald',sans-serif;
+      font-size:1.5rem;
+      margin-bottom:10px;
+      letter-spacing:2px;
+    }
+
+    .info-group p{
+      opacity:.7;
+      letter-spacing:1px;
+    }
+
+    .description{
+      font-size:1.1rem;
+      line-height:2;
+      max-width:500px;
+    }
+
+    /* content section */
+
+    .content-section{
+      display:flex;
+      align-items:center;
+      gap:80px;
+      margin-bottom:180px;
+    }
+
+    .content-section.reverse{
+      flex-direction:row-reverse;
+    }
+
+    .content-image{
+      flex:1;
+    }
+
+    .content-image img{
+      border-radius:20px;
+      transition:.5s;
+    }
+
+    .content-image img:hover{
+      transform:scale(1.02);
+    }
+
+    .content-text{
+      flex:1;
+    }
+
+    .content-text span{
+      font-family:'Oswald',sans-serif;
+      font-size:1rem;
+      letter-spacing:3px;
+      opacity:.5;
+    }
+
+    .content-text h2{
+      font-size:3rem;
+      font-weight:400;
+      margin:20px 0;
+    }
+
+    .content-text p{
+      line-height:2;
+      opacity:.8;
+    }
+
+    /* reflection */
+
+    .reflection{
+      padding-bottom:180px;
+    }
+
+    .reflection-title{
+      font-family:'Oswald',sans-serif;
+      font-size:4rem;
+      margin-bottom:40px;
+      letter-spacing:3px;
+    }
+
+    .reflection p{
+      max-width:700px;
+      line-height:2.2;
+      font-size:1.1rem;
+      opacity:.8;
+    }
+
+    /* back */
+
+    .back{
+      position: fixed;
+      right: 40px;
+      bottom: 40px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      cursor: pointer;
+      z-index: 999;
+      transition: 0.3s;
+    }
+
+    .back:hover{
+      transform:scale(1.1);
+    }
+
+    /* responsive */
+
+    @media(max-width:900px){
+
+      h1{
+        font-size:4rem;
+      }
+
+      .info{
+        flex-direction:column;
+      }
+
+      .content-section,
+      .content-section.reverse{
+        flex-direction:column;
+      }
+
+      .content-text h2{
+        font-size:2rem;
+      }
+
+      .reflection-title{
+        font-size:2.5rem;
+      }
+
+    }
+
+    /* navigation */
+
+.nav-wrapper{
+  position:fixed;
+  top:40px;
+  right:40px;
+  z-index:9999;
+  font-family:'Oswald',sans-serif;
+}
+
+.nav-toggle{
+  font-size:1rem;
+  letter-spacing:3px;
+  cursor:pointer;
+}
+
+.nav-menu{
+  margin-top:20px;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(10px);
+  transition:.4s;
+}
+
+.nav-wrapper:hover .nav-menu{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+
+.nav-group{
+  margin-bottom:25px;
+}
+
+.nav-group h3{
+  font-size:1.5rem;
+  font-weight:400;
+  margin-bottom:10px;
+  letter-spacing:2px;
+}
+
+.nav-group a{
+  display:block;
+  margin-bottom:8px;
+  opacity:.6;
+  transition:.3s;
+  text-decoration:none;
+  color:#2b2b2b;
+  letter-spacing:1px;
+}
+
+.nav-group a:hover{
+  opacity:1;
+  transform:translateX(5px);
+}
+
+.title{
+  font-family: 'SimSun', '宋体', sans-serif;
+  font-weight: bold;
+}
+  </style>
+
+</head>
+
+<body>
+
+  <!-- navigation -->
+
+<div class="nav-wrapper">
+
+  <div class="nav-toggle">
+    CONTENT +
+  </div>
+
+  <div class="nav-menu">
+
+    <div class="nav-group">
+
+      <h3>PROFILE</h3>
+
+      <a href="index.html">個人資料</a>
+
+    </div>
+
+    <div class="nav-group">
+
+      <h3>WEB</h3>
+
+      <a href="ocean.html">Ocean Fable</a>
+      <a href="market.html">Grin Market</a>
+      <a href="gallery.html">Mistery Gallery</a>
+
+    </div>
+
+    <div class="nav-group">
+
+      <h3>DEVELOP</h3>
+
+      <a href="develop1.html">Twisted Justice</a>
+      <a href="develop2.html">Under The Sea</a>
+
+    </div>
+
+    <div class="nav-group">
+
+      <h3>FILM</h3>
+
+      <a href="film.html">米干誕生計畫</a>
+
+    </div>
+
+    <div class="nav-group">
+
+      <h3>INTERACT</h3>
+
+      <a href="threshold.html">界 Threshold</a>
+
+    </div>
+
+    <div class="nav-group">
+
+      <h3>PRACTICE</h3>
+
+      <a href="isee.html">ISEE TV校園電視台</a>
+      <a href="vr.html">忠貞新村文化園區歷史場景VR導覽</a>
+
+    </div>
+
+  </div>
+
+</div>
+  <!-- hero -->
+
+  <section class="hero">
+
+    <div class="project-number">
+      PRACTICE
+    </div>
+
+    <h1 class="title">
+      HI! <br>
+      我的外國朋友
+    </h1>
+
+    <div class="hero-subtitle">
+      HI! MY FOREIGN FRIENDS
+    </div>
+
+    <div class="scroll">
+      SCROLL ↓
+    </div>
+
+  </section>
+
+  <!-- banner -->
+
+  <section class="banner">
+
+    <img src="img/isee5.png" alt="ocean">
+
+  </section>
+
+  <!-- info -->
+
+  <section class="info">
+
+    <div class="info-left">
+
+      <div class="info-group">
+        <span>TYPE</span>
+        <p>ISEE TV校園電視台</p>
+      </div>
+
+      <div class="info-group">
+        <span>ROLE</span>
+        <p>Planning / Communicating</p>
+      </div>
+
+      <div class="info-group">
+        <span>TOOLS</span>
+        <p>Canon 700D / OBS Studio / Google Docs</p>
+      </div>
+
+    </div>
+
+    <div class="info-right">
+
+      <div class="description">
+        透過採訪外國人，帶領觀眾以不同視角重新認識台灣與異國文化的差異。
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- section 01 -->
+
+  <section class="content-section">
+
+    <div class="content-image">
+      <img src="img/isee1.png" alt="">
+    </div>
+
+    <div class="content-text">
+
+      <span>SECTION 01</span>
+
+      <h2>
+        跨文化訪談
+      </h2>
+
+      <p>
+        透過與來自不同國家的外籍學生進行訪談，
+        深入了解他們對台灣文化、生活習慣與校園環境的觀察，
+        並從交流過程中挖掘具有故事性的內容主題，
+        作為節目企劃與拍攝發展的基礎
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- section 02 -->
+
+  <section class="content-section reverse">
+
+    <div class="content-image">
+      <img src="img/isee2.png" alt="">
+    </div>
+
+    <div class="content-text">
+
+      <span>SECTION 02</span>
+
+      <h2>
+        企劃與腳本設計
+      </h2>
+
+      <p>
+        根據訪談內容整理觀點與素材，
+        規劃節目主題、訪談流程與拍攝架構，
+        將真實經驗轉化為具有觀看節奏與敘事性的影音內容，
+        提升觀眾對跨文化議題的共鳴與理解
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- section 03 -->
+
+  <section class="content-section">
+
+    <div class="content-image">
+      <img src="img/isee3.png" alt="">
+    </div>
+
+    <div class="content-text">
+
+      <span>SECTION 03</span>
+
+      <h2>
+        影片拍攝執行
+      </h2>
+
+      <p>
+        協助現場拍攝與受訪者溝通，
+        確保訪談內容能自然呈現，
+        並透過鏡頭安排與互動引導，
+        讓觀眾能從外國學生的視角重新認識台灣文化
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- reflection -->
+
+  <section class="reflection">
+
+    <div class="reflection-title">
+      REFLECTION
+    </div>
+
+    <p>
+        在 ISEE TV 校園電視台實習期間我參與「HI!我的外國朋友」系列企劃製作，
+        負責前期訪談、資料整理與企劃發想工作。透過與不同國籍學生交流，
+        我學習如何從對話中挖掘有價值的故事內容，並將其轉化為具備敘事結構的節目企劃。
+        在實際執行過程中，也培養了跨文化溝通能力與團隊協作經驗，
+        讓我更了解影音內容從發想到製作的完整流程，
+        並提升了企劃統整與內容表達的能力。
+    </p>
+
+  </section>
+
+  <!-- back -->
+
+  <div class="back" onclick="scrollToTop()">
+    BACK
+  </div>
+
+  <script>
+
+    function scrollToTop(){
+
+      window.scrollTo({
+        top:0,
+        behavior:'smooth'
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>

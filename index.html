@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIN YUEH TIEN</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body{
+      background: #d8d2cc;
+      color: #2b2b2b;
+      overflow-x: hidden;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    /* background */
+    .bg-circle{
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.2;
+      z-index: -1;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .circle1{
+      width: 320px;
+      height: 320px;
+      background: #b8b0a8;
+      top: 10%;
+      left: 60%;
+    }
+
+    .circle2{
+      width: 260px;
+      height: 260px;
+      background: #c7c0b8;
+      bottom: 5%;
+      left: 10%;
+      animation-delay: 2s;
+    }
+
+    @keyframes float{
+      0%{
+        transform: translateY(0px);
+      }
+      50%{
+        transform: translateY(-30px);
+      }
+      100%{
+        transform: translateY(0px);
+      }
+    }
+
+    /* custom cursor */
+    .cursor{
+      width: 25px;
+      height: 25px;
+      border: 1px solid #2b2b2b;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: transform 0.08s;
+    }
+
+    /* logo */
+    .logo{
+      position: fixed;
+      right: 40px;
+      bottom: 40px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      cursor: pointer;
+      z-index: 999;
+      transition: 0.3s;
+    }
+
+    .logo:hover{
+      transform: scale(1.1);
+    }
+
+    /* hero */
+    .hero{
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10%;
+      position: relative;
+    }
+
+    .hero-content{
+      animation: fadeUp 1.2s ease;
+      flex: 1;
+    }
+
+    .hero-photo {
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      animation: fadeUp 1.5s ease;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0px;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to{
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1{
+      font-family: 'Oswald', sans-serif;
+      font-size: 8rem;
+      line-height: 0.9;
+      font-weight: 400;
+      letter-spacing: 3px;
+    }
+
+    .subtitle{
+      margin-top: 25px;
+      letter-spacing: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* scroll */
+    .scroll{
+      position: absolute;
+      bottom: 40px;
+      left: 10%;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 3px;
+      animation: scrollMove 2s infinite;
+    }
+
+    @keyframes scrollMove{
+      0%{
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+      50%{
+        transform: translateY(6px);
+        opacity: 0.3;
+      }
+      100%{
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+    }
+
+    /* works */
+    .preview{
+      padding: 120px 10%;
+    }
+
+    .preview-title{
+      font-family: 'Oswald', sans-serif;
+      font-size: 4rem;
+      margin-bottom: 60px;
+      letter-spacing: 3px;
+    }
+
+    .work{
+      padding: 35px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: 0.5s;
+      position: relative;
+    }
+
+    .work:hover{
+      padding-left: 25px;
+    }
+
+    .work::after{
+      /* content: "↗"; */
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: 0.5s;
+      font-size: 2rem;
+    }
+
+    .work:hover::after{
+      opacity: 1;
+      right: 20px;
+    }
+
+    .work-number{
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      opacity: 0.5;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .work h2{
+      font-size: 3rem;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .work p{
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+
+    /* about */
+    .about{
+      padding: 140px 10%;
+    }
+
+    .about-title{
+      font-family: 'Oswald', sans-serif;
+      font-size: 4rem;
+      letter-spacing: 3px;
+      margin-bottom: 60px;
+    }
+
+    .about-content{
+      display: flex;
+      justify-content: space-between;
+      gap: 80px;
+    }
+
+    .about-left{
+      flex: 1;
+    }
+
+    .about-left p{
+      font-size: 1.2rem;
+      line-height: 2;
+      max-width: 500px;
+    }
+
+    .about-right{
+      flex: 1;
+    }
+
+    .skill-group{
+      margin-bottom: 50px;
+    }
+
+    .skill-group span{
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .skill-group p{
+      opacity: 0.7;
+      letter-spacing: 1px;
+    }
+
+    /* navigation */
+    .nav-wrapper{
+      position: fixed;
+      top: 40px;
+      right: 40px;
+      z-index: 9999;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .nav-toggle{
+      font-size: 1rem;
+      letter-spacing: 3px;
+      cursor: pointer;
+    }
+
+    .nav-menu{
+      margin-top: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: .4s;
+    }
+
+    .nav-wrapper:hover .nav-menu{
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .nav-group{
+      margin-bottom: 25px;
+    }
+
+    .nav-group h3{
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .nav-group a{
+      display: block;
+      margin-bottom: 8px;
+      opacity: .6;
+      transition: .3s;
+      text-decoration: none;
+      color: #2b2b2b;
+      letter-spacing: 1px;
+    }
+
+    .nav-group a:hover{
+      opacity: 1;
+      transform: translateX(5px);
+    }
+
+    /* responsive */
+    @media(max-width:768px){
+      .hero {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 80px;
+      }
+
+      .hero-photo {
+        margin-top: 40px;
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .hero-photo img {
+        max-width: 280px;
+      }
+
+      h1{
+        font-size: 4rem;
+      }
+
+      .preview-title,
+      .about-title{
+        font-size: 2.5rem;
+      }
+
+      .work h2{
+        font-size: 2rem;
+      }
+
+      .about-content{
+        flex-direction: column;
+      }
+
+      .about-left p{
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="nav-wrapper">
+    <div class="nav-toggle">
+      CONTENT +
+    </div>
+    <div class="nav-menu">
+      <div class="nav-group">
+        <h3>PROFILE</h3>
+        <a href="index.html">個人資料</a>
+      </div>
+      <div class="nav-group">
+        <h3>WEB</h3>
+        <a href="ocean.html">Ocean Fable</a>
+        <a href="market.html">Grin Market</a>
+        <a href="gallery.html">Mistery Gallery</a>
+      </div>
+      <div class="nav-group">
+        <h3>DEVELOP</h3>
+        <a href="develop1.html">Twisted Justice</a>
+        <a href="develop2.html">Under The Sea</a>
+      </div>
+      <div class="nav-group">
+        <h3>FILM</h3>
+        <a href="film.html">米干誕生計畫</a>
+      </div>
+      <div class="nav-group">
+        <h3>INTERACT</h3>
+        <a href="threshold.html">界 Threshold</a>
+      </div>
+      <div class="nav-group">
+        <h3>PRACTICE</h3>
+        <a href="isee.html">ISEE TV校園電視台</a>
+        <a href="vr.html">忠貞新村文化園區歷史場景VR導覽</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-circle circle1"></div>
+  <div class="bg-circle circle2"></div>
+
+  <div class="cursor"></div>
+
+  <div class="logo" onclick="scrollToTop()">
+    BACK
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        LIN <br>
+        YUEH TIEN
+      </h1>
+      <div class="subtitle">
+        企劃 / 網頁設計 / 程式設計
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="./img/me.jpg" alt="me">
+    </div>
+
+    <div class="scroll">
+      SCROLL ↓
+    </div>
+  </section>
+
+  <section class="preview">
+    <div class="preview-title">
+      WORKS
+    </div>
+
+    <div class="work">
+      <div class="work-number">01 / PROFILE</div>
+      <h2>個人資料</h2>
+      <p>INTRODUCE</p>
+    </div>
+
+    <div class="work">
+      <div class="work-number">02 / WEB</div>
+      <h2>網頁設計</h2>
+      <p>海洋寓言 / 有梗菜市場 / 畫廊迷蹤</p>
+    </div>
+
+    <div class="work">
+      <div class="work-number">03 / DEVELOP</div>
+      <h2>遊戲設計</h2>
+      <p>微整大暴動 / Under The Sea</p>
+    </div>
+
+    <div class="work">
+      <div class="work-number">04 / FILM</div>
+      <h2>影像創作</h2>
+      <p>米干誕生計劃</p>
+    </div>
+
+    <div class="work">
+      <div class="work-number">05 / INTERACTIVE</div>
+      <h2>互動投影</h2>
+      <p>界</p>
+    </div>
+
+    <div class="work">
+      <div class="work-number">06 / PRACTICE</div>
+      <h2>校內實習</h2>
+      <p>ISEE TV校園電視台 / 忠貞新村園區歷史場景VR導覽</p>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-title">
+      ABOUT
+    </div>
+
+    <div class="about-content">
+      <div class="about-left">
+        <p>
+          具備基礎程式設計與網頁開發能力，熟悉前端技術應用，
+          擅長邏輯思考與內容規劃，將想法轉化為具體執行方向，
+          對數位內容與企劃領域具備高度興趣。
+        </p>
+      </div>
+
+      <div class="about-right">
+        <div class="skill-group">
+          <span>LANGUAGE</span>
+          <p>菲律賓語言學校 短期英語進修</p>
+        </div>
+
+        <div class="skill-group">
+          <span>EXPERIENCE</span>
+          <p>2025元智大學畢業典禮 接待大使</p>
+        </div>
+
+        <div class="skill-group">
+          <span>AWARD</span>
+          <p>台新公益影響力短片獎 第五名</p>
+          <p>為桃園做研究實作組 金質研究獎</p>
+          <p>第23屆育秀盃創意獎 複賽入圍</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // scroll to top
+    function scrollToTop(){
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // custom cursor
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove',(e)=>{
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+  </script>
+
+</body>
+</html>
